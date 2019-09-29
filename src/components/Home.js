@@ -8,18 +8,22 @@ class Home extends Component {
      handleOnClick = () => {
         const { username, password } = this.state;
         if (!username) {
-            console.log('Username required');
+            alert('Username required');
         }
-        if (!password) {
-            console.log('password required');
+        if (username && !password) {
+            alert('password required');
         }
         if (username.length > 0 && password.length > 0) {
             if (username === 'sameer' && password === '123456') {
-                console.log('Correct credentials');
+                this.props.history.push('/users');
             } else {
-                console.log('Username or password incorrect');
+                alert('Username or password incorrect');
             }
         }
+    }
+
+    handleOnSignUp = () => {
+        this.props.history.push('/sign-up')
     }
 
     handleOnChange = (e) => {
@@ -39,7 +43,11 @@ class Home extends Component {
                 <button onClick={this.handleOnClick}>
                     Sign In
                 </button>
-            </div>  );
+                <button onClick={this.handleOnSignUp}>
+                    Sign Up
+                </button>
+            </div>
+        );
     }
 }
  
